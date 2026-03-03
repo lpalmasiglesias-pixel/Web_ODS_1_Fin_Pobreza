@@ -3,209 +3,260 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ODS 1: Fin de la Pobreza - Agenda 2030</title>
+    <title>ODS 1 - Fin de la Pobreza</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Estilos personalizados para los contenedores solicitados */
-        .ods-container {
-            background-color: #f8fafc; /* Color de fondo */
-            border: 2px solid #e11d48; /* Borde de otro color (Rojo ODS 1) */
-            padding: 1.5rem;           /* Padding */
-            margin-bottom: 2rem;       /* Márgenes */
-            border-radius: 0.5rem;
+        :root {
+            --ods-red: #e5243b;
+            --ods-bg: #fff1f2;
+            --ods-border: #fca5a5;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+
+        .container-box {
+            background-color: var(--ods-bg);
+            border: 4px solid var(--ods-border);
+            padding: 24px;
+            margin: 20px 0;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
         }
 
         .nav-link {
-            transition: all 0.3s ease;
+            transition: all 0.3s;
+            padding: 8px 16px;
+            border-radius: 6px;
         }
 
         .nav-link:hover {
-            background-color: #e11d48;
+            background-color: var(--ods-red);
             color: white;
         }
 
-        .hidden {
+        .active-view {
+            display: block !important;
+        }
+
+        .hidden-view {
             display: none;
+        }
+
+        h2 {
+            color: var(--ods-red);
+            font-weight: bold;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            display: block;
+            margin: 15px auto;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Estilo del botón de la infografía */
+        .btn-infografia {
+            background-color: white;
+            color: var(--ods-red);
+            font-weight: bold;
+            padding: 12px 24px;
+            border-radius: 9999px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-top: 20px;
+            text-decoration: none;
+        }
+
+        .btn-infografia:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+            background-color: #fef2f2;
         }
     </style>
 </head>
-<body class="bg-gray-100 font-sans leading-normal tracking-normal">
+<body>
 
-    <!-- Header / Menú de Navegación -->
     <header class="bg-white shadow-md sticky top-0 z-50">
-        <nav class="container mx-auto px-6 py-4">
-            <div class="flex items-center justify-between">
-                <div class="text-xl font-bold text-red-600">
-                    ODS #1: Fin de la Pobreza
-                </div>
-                <div class="flex space-x-4">
-                    <button onclick="showPage('index')" id="btn-index" class="nav-link px-3 py-2 rounded font-semibold text-gray-700 bg-gray-200">Inicio</button>
-                    <button onclick="showPage('secundaria')" id="btn-secundaria" class="nav-link px-3 py-2 rounded font-semibold text-gray-700">Datos Destacables</button>
-                </div>
-            </div>
-        </nav>
+        <div class="max-w-5xl mx-auto px-4 py-4">
+            <h1 class="text-3xl font-extrabold text-red-600">ODS 1: FIN DE LA POBREZA</h1>
+        </div>
     </header>
 
-    <main class="container mx-auto px-6 py-8">
+    <main class="max-w-5xl mx-auto px-4 py-8">
 
-        <!-- SECCIÓN INDEX.HTML -->
-        <div id="page-index">
-            <h1 class="text-3xl font-bold text-center mb-8 text-red-700">Objetivo 1: Poner fin a la pobreza en todas sus formas en todo el mundo</h1>
-            
-            <!-- Contenedor 1: Menú Interno (Enlaces a elementos y página secundaria) -->
-            <div class="ods-container">
-                <h2 class="text-xl font-bold mb-4">Navegación del Sitio</h2>
-                <ul class="flex flex-wrap gap-4">
-                    <li><a href="#elem1-index" class="text-blue-600 hover:underline">1. Introducción Visual</a></li>
-                    <li><a href="#elem2-index" class="text-blue-600 hover:underline">2. Metas del Objetivo</a></li>
-                    <li><a href="#elem3-index" class="text-blue-600 hover:underline">3. Saber Más</a></li>
-                    <li><a href="#elem4-index" class="text-blue-600 hover:underline">4. Infografía</a></li>
-                    <li><button onclick="showPage('secundaria')" class="text-red-600 font-bold hover:underline italic">Ir a Datos Destacables</button></li>
+        <!-- NAVEGACIÓN (Contenedor 1) -->
+        <nav class="container-box bg-white flex flex-wrap gap-4 justify-center items-center">
+            <a href="#" onclick="showPage('index')" class="nav-link font-bold border-b-2 border-red-600">Página Principal</a>
+            <a href="#" onclick="showPage('secundaria')" class="nav-link font-bold border-b-2 border-red-300">Datos Destacables</a>
+            <span class="text-gray-300">|</span>
+            <a href="#elemento1" class="nav-link text-sm">Visual</a>
+            <a href="#elemento2" class="nav-link text-sm">Metas/Texto</a>
+            <a href="#elemento3" class="nav-link text-sm">Enlaces</a>
+            <a href="#elemento4" class="nav-link text-sm">Multimedia</a>
+        </nav>
+
+        <!-- VISTA INDEX (Página Principal) -->
+        <div id="index-view" class="active-view">
+            <div class="mb-8 p-6 bg-red-50 border-l-8 border-red-600 rounded-r-lg">
+                <p class="text-lg italic">"Poner fin a la pobreza en todas sus formas en todo el mundo."</p>
+            </div>
+
+            <!-- Elemento 1: Fotografía -->
+            <section id="elemento1" class="container-box">
+                <h2>Impacto Visual de la Realidad</h2>
+                <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1000&auto=format&fit=crop" alt="[Imagen de niños en situación vulnerable]">
+                <p class="text-center text-sm text-gray-500 mt-2">[Imagen: Cooperación internacional y ayuda humanitaria]</p>
+            </section>
+
+            <!-- Elemento 2: Metas -->
+            <section id="elemento2" class="container-box">
+                <h2>Objetivos y Metas de la Agenda 2030</h2>
+                <p class="mb-4">Para 2030, el objetivo principal es erradicar la pobreza extrema para todas las personas en el mundo, actualmente medida por un ingreso por persona inferior a 2,15 dólares al día.</p>
+                
+                <img src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?q=80&w=600&auto=format&fit=crop" alt="[Imagen de manos unidas]">
+                
+                <h3 class="font-bold mt-6 mb-2">Protección Social y Recursos</h3>
+                <p class="mb-4">Es fundamental implementar a nivel nacional sistemas y medidas apropiados de protección social para todos, y lograr una amplia cobertura de los pobres y los vulnerables.</p>
+                
+                <img src="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?q=80&w=600&auto=format&fit=crop" alt="[Imagen de comunidad trabajando]">
+                
+                <h3 class="font-bold mt-6 mb-2">Resiliencia ante Desastres</h3>
+                <p>Fomentar la resiliencia de los pobres y las personas que se encuentran en situaciones vulnerables y reducir su exposición y vulnerabilidad a los fenómenos extremos relacionados con el clima y otros desastres económicos.</p>
+            </section>
+
+            <!-- Elemento 3: Links -->
+            <section id="elemento3" class="container-box">
+                <h2>Recursos para saber más</h2>
+                <ul class="list-disc ml-6 space-y-3">
+                    <li>Consulta el portal oficial de la ONU sobre el <a href="https://www.un.org/sustainabledevelopment/es/poverty/" target="_blank" class="text-blue-600 underline">Desarrollo Sostenible</a>.</li>
+                    <li>Informe de seguimiento del <a href="https://unstats.un.org/sdgs/report/2023/" target="_blank" class="text-blue-600 underline">Banco Mundial sobre Pobreza</a>.</li>
+                    <li>Guía de acción rápida de <a href="https://www.undp.org/es/sustainable-development-goals/fin-de-la-pobreza" target="_blank" class="text-blue-600 underline">PNUD para el ODS 1</a>.</li>
                 </ul>
-            </div>
-
-            <!-- Elemento 1: Una imagen -->
-            <div id="elem1-index" class="ods-container">
-                <h2 class="text-xl font-semibold mb-4 text-red-600">Introducción</h2>
-                <p class="mb-4">La pobreza va más allá de la falta de ingresos y recursos para garantizar unos medios de vida sostenibles. Entre sus manifestaciones se incluyen el hambre y la malnutrición.</p>
-                <div class="flex justify-center">
-                    <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=800&q=80" alt="Personas trabajando por la comunidad" class="rounded-lg shadow-lg max-w-full h-auto" onerror="this.src='https://via.placeholder.com/800x400?text=Imagen+Introducción+ODS1'">
-                </div>
-            </div>
-
-            <!-- Elemento 2: Texto de los objetivos (metas) -->
-            <div id="elem2-index" class="ods-container">
-                <h2 class="text-2xl font-bold mb-4 text-red-600">Metas del Objetivo 1</h2>
-                
-                <h3 class="text-lg font-semibold mt-4">Erradicación de la pobreza extrema</h3>
-                <p class="mt-2 text-gray-700">Para 2030, erradicar la pobreza extrema para todas las personas en el mundo, actualmente medida por un ingreso por persona inferior a 2,15 dólares al día.</p>
-                
-                <div class="my-6 flex flex-col md:flex-row gap-4 justify-center">
-                    <img src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?auto=format&fit=crop&w=400&q=80" alt="Ayuda humanitaria" class="rounded shadow-md w-full md:w-1/2 h-64 object-cover">
-                    <img src="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?auto=format&fit=crop&w=400&q=80" alt="Educación en comunidades" class="rounded shadow-md w-full md:w-1/2 h-64 object-cover">
-                </div>
-
-                <h3 class="text-lg font-semibold mt-4">Reducción de la pobreza a la mitad</h3>
-                <p class="mt-2 text-gray-700">Reducir al menos a la mitad la proporción de hombres, mujeres y niños de todas las edades que viven en la pobreza en todas sus dimensiones con arreglo a las definiciones nacionales.</p>
-                
-                <h3 class="text-lg font-semibold mt-4">Sistemas de protección social</h3>
-                <p class="mt-2 text-gray-700">Poner en práctica a nivel nacional sistemas y medidas apropiados de protección social para todos y, para 2030, lograr una amplia cobertura de los pobres y los vulnerables.</p>
-            </div>
-
-            <!-- Elemento 3: Lista de puntos con links -->
-            <div id="elem3-index" class="ods-container">
-                <h2 class="text-xl font-bold mb-4 text-red-600">Recursos para Saber Más</h2>
-                <ul class="list-disc list-inside space-y-2 text-gray-700">
-                    <li>Conoce la Agenda 2030 completa. <a href="https://www.un.org/sustainabledevelopment/es/development-agenda/" target="_blank" class="text-blue-500 hover:text-blue-700 underline">Visitar sitio oficial</a></li>
-                    <li>Informe de los Objetivos de Desarrollo Sostenible. <a href="https://unstats.un.org/sdgs/report/2023/" target="_blank" class="text-blue-500 hover:text-blue-700 underline">Leer informe</a></li>
-                    <li>Acciones que puedes tomar hoy mismo. <a href="https://www.un.org/sustainabledevelopment/es/takeaction/" target="_blank" class="text-blue-500 hover:text-blue-700 underline">Guía de acción</a></li>
-                </ul>
-            </div>
+            </section>
 
             <!-- Elemento 4: Infografía -->
-            <div id="elem4-index" class="ods-container text-center">
-                    <li>Infografía. <a href="https://www.un.org/sustainabledevelopment/wp-content/uploads/sites/3/2024/01/2309739_S_SDG_2023_infographics_1-1.pdf" target="_blank" class="text-blue-500 hover:text-blue-700 underline">Visitar sitio oficial</a></li>
-                    </ul>
-                    <p class="mt-4 text-sm text-gray-500">[Simulación de Infografía de Datos Reales de la ONU]</p>
-            </ul>
+            <section id="elemento4" class="container-box">
+                <h2>Infografía del ODS 1</h2>
+                <div class="bg-red-600 text-white p-8 rounded-lg text-center flex flex-col items-center">
+                    <div class="text-6xl font-bold mb-4">1/10</div>
+                    <p class="text-xl">Personas en el mundo viven con menos de $1.90 al día.</p>
+                    <div class="w-full h-2 bg-red-400 mt-6 rounded-full overflow-hidden">
+                        <div class="bg-white h-full w-1/10"></div>
+                    </div>
+                    
+                    <!-- Botón para ver la infografía PDF -->
+                    <a href="https://www.un.org/sustainabledevelopment/wp-content/uploads/sites/3/2024/01/2309739_S_SDG_2023_infographics_1-1.pdf" target="_blank" class="btn-infografia">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" clip-rule="evenodd" />
+                        </svg>
+                        Ver Infografía Completa (PDF)
+                    </a>
+                    
+                    <p class="mt-4 text-sm opacity-80 italic">Haz clic arriba para acceder a los datos oficiales de 2023.</p>
+                </div>
+            </section>
         </div>
 
-        <!-- SECCIÓN SECUNDARIA.HTML -->
-        <div id="page-secundaria" class="hidden">
-            <h1 class="text-3xl font-bold text-center mb-8 text-red-700">Datos Destacables del Objetivo 1</h1>
-            <button onclick="showPage('index')" id="btn-index">Inicio</button>
-            <button onclick="showPage('secundaria')" id="btn-secundaria">Datos Destacables</button>
-        </div>
+        <!-- VISTA SECUNDARIA (Datos Destacables) -->
+        <div id="secundaria-view" class="hidden-view">
+            <div class="mb-8 p-6 bg-blue-50 border-l-8 border-blue-600 rounded-r-lg">
+                <p class="text-lg italic">Explora las cifras, estadísticas y la realidad actual de la pobreza global.</p>
+            </div>
 
-            <!-- Contenedor 1: Menú Interno (Hacia elementos y index) -->
-            <div class="ods-container">
-                <h2 class="text-xl font-bold mb-4">Navegación de Datos</h2>
-                <ul class="flex flex-wrap gap-4">
-                    <li><a href="#elem1-sec" class="text-blue-600 hover:underline">1. Impacto Global</a></li>
-                    <li><a href="#elem2-sec" class="text-blue-600 hover:underline">2. Cifras Clave</a></li>
-                    <li><a href="#elem3-sec" class="text-blue-600 hover:underline">3. Últimas Noticias</a></li>
-                    <li><a href="#elem4-sec" class="text-blue-600 hover:underline">4. Vídeo Informativo</a></li>
-                    <li><button onclick="showPage('index')" class="text-red-600 font-bold hover:underline italic">Volver a Inicio (Index)</button></li>
+            <!-- Elemento 1: Fotografía Secundaria -->
+            <section id="secundaria-e1" class="container-box">
+                <h2>Realidad Estadística</h2>
+                <img src="https://images.unsplash.com/photo-1542810634-71277d95dcbb?q=80&w=1000&auto=format&fit=crop" alt="[Imagen de gráfico de crecimiento económico]">
+                <p class="text-center text-sm text-gray-500 mt-2">[Imagen: Contrastes económicos en zonas urbanas]</p>
+            </section>
+
+            <!-- Elemento 2: Datos Destacables -->
+            <section id="secundaria-e2" class="container-box">
+                <h2>Cifras que debemos conocer</h2>
+                <p class="mb-4">Más de 700 millones de personas aún viven en condiciones de pobreza extrema y luchan para satisfacer sus necesidades más básicas, como la salud, la educación y el acceso al agua.</p>
+                
+                <img src="https://images.unsplash.com/photo-1509099836639-18ba1795216d?q=80&w=600&auto=format&fit=crop" alt="[Imagen de educación precaria]">
+                
+                <h3 class="font-bold mt-6 mb-2">Desigualdad de Género</h3>
+                <p class="mb-4">Por cada 100 hombres de entre 25 y 34 años que viven en la pobreza extrema, hay 122 mujeres. La brecha de género sigue siendo un obstáculo crítico.</p>
+                
+                <img src="https://images.unsplash.com/photo-1531206715517-5ca1613d9068?q=80&w=600&auto=format&fit=crop" alt="[Imagen de niños sonriendo]">
+                
+                <h3 class="font-bold mt-6 mb-2">Impacto del COVID-19</h3>
+                <p>La pandemia de la COVID-19 provocó el primer aumento de la pobreza extrema en una generación, empujando a millones de personas más a esta situación.</p>
+            </section>
+
+            <!-- Elemento 3: Noticias -->
+            <section id="secundaria-e3" class="container-box">
+                <h2>Últimas Noticias</h2>
+                <ul class="list-disc ml-6 space-y-3">
+                    <li><a href="https://news.un.org/es/story/2023/10/1524817" target="_blank" class="text-blue-600 underline">ONU: El progreso hacia el fin de la pobreza se estanca</a>.</li>
+                    <li><a href="https://elpais.com/planeta-futuro/" target="_blank" class="text-blue-600 underline">Planeta Futuro: Reportajes sobre desarrollo humano</a>.</li>
+                    <li><a href="https://www.efe.com/efe/espana/sociedad/pobreza" target="_blank" class="text-blue-600 underline">Agencia EFE: Actualidad sobre vulnerabilidad social</a>.</li>
                 </ul>
-            </div>
+            </section>
 
-            <!-- Elemento 1: Una imagen -->
-            <div id="elem1-sec" class="ods-container">
-                <h2 class="text-xl font-semibold mb-4 text-red-600">Contexto Mundial</h2>
-                <p class="mb-4">A pesar de los avances, el mundo no está en camino de alcanzar la meta de erradicar la pobreza para 2030, especialmente tras el impacto de la pandemia.</p>
-                <div class="flex justify-center">
-                    <img src="https://images.unsplash.com/photo-1541976590-71394168159d?auto=format&fit=crop&w=800&q=80" alt="Mapa del mundo simbólico" class="rounded-lg shadow-lg max-w-full h-auto" onerror="this.src='https://via.placeholder.com/800x400?text=Imagen+Datos+Globales'">
+            <!-- Elemento 4: Vídeo (Sustituido anteriormente) -->
+            <section id="secundaria-e4" class="container-box">
+                <h2>Multimedia: ¿Qué es la pobreza?</h2>
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/ustRO3EG_-8" title="¿Qué es la pobreza?" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>
-            </div>
-
-            <!-- Elemento 2: Texto de datos destacables -->
-            <div id="elem2-sec" class="ods-container">
-                <h2 class="text-2xl font-bold mb-4 text-red-600">Hechos y Cifras 2024</h2>
-                
-                <h3 class="text-lg font-semibold mt-4">Desempleo y Seguridad Social</h3>
-                <p class="mt-2 text-gray-700">Solo el 47% de la población mundial está efectivamente cubierta por al menos un beneficio de protección social, dejando a miles de millones desprotegidos ante crisis.</p>
-                
-                <div class="my-6 flex flex-col md:flex-row gap-4 justify-center">
-                    <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb773b09?auto=format&fit=crop&w=400&q=80" alt="Niños en entorno urbano" class="rounded shadow-md w-full md:w-1/2 h-64 object-cover">
-                    <img src="https://images.unsplash.com/photo-1509099836639-18ba1795216d?auto=format&fit=crop&w=400&q=80" alt="Agricultura de subsistencia" class="rounded shadow-md w-full md:w-1/2 h-64 object-cover">
-                </div>
-
-                <h3 class="text-lg font-semibold mt-4">Pobreza Infantil</h3>
-                <p class="mt-2 text-gray-700">A nivel mundial, los niños tienen el doble de probabilidades que los adultos de vivir en la pobreza extrema. Esto afecta su desarrollo cognitivo y físico irreversiblemente.</p>
-                
-                <h3 class="text-lg font-semibold mt-4">Vulnerabilidad al Cambio Climático</h3>
-                <p class="mt-2 text-gray-700">Las personas que viven en la pobreza son las más vulnerables a los desastres naturales y eventos climáticos extremos, perdiendo sus escasos recursos con cada crisis.</p>
-            </div>
-
-            <!-- Elemento 3: Lista de puntos con links de noticias -->
-            <div id="elem3-sec" class="ods-container">
-                <h2 class="text-xl font-bold mb-4 text-red-600">Últimas Noticias</h2>
-                <ul class="list-disc list-inside space-y-2 text-gray-700">
-                    <li>Nuevos desafíos post-pandemia. <a href="https://news.un.org/es/story/2023/07/1522512" target="_blank" class="text-blue-500 hover:text-blue-700 underline">Leer noticia ONU</a></li>
-                    <li>Informe sobre desigualdad económica global. <a href="https://www.worldbank.org/es/topic/poverty/overview" target="_blank" class="text-blue-500 hover:text-blue-700 underline">Ver reporte Banco Mundial</a></li>
-                    <li>Avances en protección social en América Latina. <a href="https://www.cepal.org/es/temas/pobreza-desigualdad" target="_blank" class="text-blue-500 hover:text-blue-700 underline">Consultar CEPAL</a></li>
-                </ul>
-            </div>
-
-            <!-- Elemento 4: Un vídeo -->
-            <div id="elem4-sec" class="ods-container">
-                <h2 class="text-xl font-bold mb-4 text-red-600">Vídeo: Entendiendo la Pobreza</h2>
-                <div class="aspect-w-16 aspect-h-9">
-                    <iframe width="420" height="315"
-                    src="<iframe width="1396" height="785" src="https://www.youtube.com/embed/ustRO3EG_-8" title="¿Qué es la pobreza?" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>">
-                    </iframe>
-                </div>
-            </div>
+                <p class="mt-4 text-center text-sm font-semibold">Video informativo sobre los conceptos fundamentales de la pobreza.</p>
+            </section>
         </div>
 
     </main>
 
-    <footer class="bg-gray-800 text-white py-6">
-        <div class="container mx-auto px-6 text-center">
-            <p>&copy; 2024 Proyecto Educativo ODS - Información extraída de UN.org</p>
-        </div>
+    <footer class="bg-gray-800 text-white py-8 mt-12 text-center">
+        <p>Proyecto Educativo Agenda 2030 - ODS 1</p>
+        <p class="text-sm opacity-50 mt-2">Creado con fines de aprendizaje</p>
     </footer>
 
     <script>
-        function showPage(pageId) {
-            // Ocultar ambas páginas
-            document.getElementById('page-index').classList.add('hidden');
-            document.getElementById('page-secundaria').classList.add('hidden');
+        function showPage(page) {
+            const index = document.getElementById('index-view');
+            const secundaria = document.getElementById('secundaria-view');
             
-            // Quitar estilos activos de botones
-            document.getElementById('btn-index').classList.remove('bg-gray-200');
-            document.getElementById('btn-secundaria').classList.remove('bg-gray-200');
-
-            // Mostrar la seleccionada
-            document.getElementById('page-' + pageId).classList.remove('hidden');
-            document.getElementById('btn-' + pageId).classList.add('bg-gray-200');
-
-            // Scroll al inicio
-            window.scrollTo(0, 0);
+            if (page === 'index') {
+                index.classList.add('active-view');
+                index.classList.remove('hidden-view');
+                secundaria.classList.add('hidden-view');
+                secundaria.classList.remove('active-view');
+                window.scrollTo(0, 0);
+            } else {
+                secundaria.classList.add('active-view');
+                secundaria.classList.remove('hidden-view');
+                index.classList.add('hidden-view');
+                index.classList.remove('active-view');
+                window.scrollTo(0, 0);
+            }
         }
     </script>
 </body>
 </html>
-
-
-
